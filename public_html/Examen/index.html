@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="js/npm.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="js/angular.min.js" type="text/javascript"></script>
+        <script src="script/controller.js" type="text/javascript"></script>
+        <script src="script/service.js" type="text/javascript"></script>
+    </head>
+    <body ng-app="myApp">
+
+        <div class="page-header text-center" ng-controller="teamsPlayersController">
+            <div class="container">
+                <div class="row">
+                    <strong>Team section</strong>
+                    <form class="form-inline" ng-submit="teamSubFunc()">
+                        <input type="text" placeholder="Team name" ng-model="teamName">
+                        <input type="text" placeholder="Victories" ng-model="teamVictories">
+                        <input type="text" placeholder="Defeats" ng-model="teamDefeats">
+                        <input type="text" placeholder="Game" ng-model="game">
+                        <a class="btn btn-primary">Create Team</a>
+                    </form>
+                </div>
+                <br>
+                <div class="row">
+                    <strong>Player section</strong>
+                    <form class="form-inline" ng-submit="playerSubFunc()">
+                        <input type="text" placeholder="Nick" ng-model="playerNick">
+                        <input type="text" placeholder="Name" ng-model="playerName">
+                        <input type="text" placeholder="Role" ng-model="playerRole">
+                        <input type="text" placeholder="KDA" ng-model="playerKda">
+                        <a class="btn btn-warning">Create Player / Modify Player</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" ng-controller="resultController">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <select class="form-control" id="sel1">
+                                    <option class="dropdown-header">Select a team</option>
+                                    <option ng-repeat="team in teams">{{team.name}}</option>
+                                </select>
+                            </th>
+                            <th colspan="2">
+                                Victories: {{team.victories}}<br>
+                                Defeats: {{team.defeats}}
+                            </th>
+                            <th>
+                                Game: {{team.game}}<br>
+                                Player with max KDA:
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Nickname</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>KDA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bjergsen</td>
+                            <td>Soren Bjerg</td>
+                            <td>Mid Laner</td>
+                            <td>4.59</td>
+                            <td>
+                                <a class='btn alert-danger'>
+                                    Remove
+                                    <span class="glyphicon glyphicon-remove">
+                                    </span>    
+                                </a>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </body>
+</html>
