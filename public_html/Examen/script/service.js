@@ -1,5 +1,4 @@
 function Player(nick, name, role, kda) {
-    console.log("Submit de players");
     this.nickname = nick;
     this.name = name;
     this.role = role;
@@ -14,12 +13,11 @@ function Player(nick, name, role, kda) {
 }
 
 function Team(name, victories, defeats, game) {
-    console.log("Submit de teams");
     this.name = name;
-    this.victories = name;
-    this.defeats = role;
-    this.game = kda;
-    this.players = new Array();
+    this.victories = victories;
+    this.defeats = defeats;
+    this.game = game;
+    this.players = [];
 
     this.addPlayer = function (player) {
         this.players.push(player)
@@ -59,6 +57,12 @@ app.service('myService', function () {
     this.newPlayer = function (nick, name, role, kda) {
         var player = new Player(nick, name, role, kda);
         this.players.push(player);
+    }
+    this.newP = function (team, nick, name, role, kda) {
+        var player = new Player(nick, name, role, kda);
+        //console.log(team);
+        this.teams[team].players.push(player);
+        //this.players.push(player);
     }
     this.newTeam = function (name, victories, defeats, game) {
         var team = new Team(name, victories, defeats, game);

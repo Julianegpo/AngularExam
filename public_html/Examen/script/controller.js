@@ -1,6 +1,17 @@
 var app = angular.module('myApp', []);
 app.controller('teamsPlayersController', ['$scope', 'myService',
-    function ($scope, myService) {        
+    function ($scope, myService) {
+
+        $scope.tsm = myService.newTeam('Team SoloMid', 17, 1, "League of Legends")
+        
+        /*$scope.p1 = myService.newPlayer("Hauntzer", "Kevin Yarnell", "Top Laner", 2.29);
+        $scope.p2 = myService.newPlayer("Svenskeren", "Dennis Johnsen", "Jungler", 3.78);
+        $scope.p3 = myService.newPlayer("Bjergsen", "Søren Bjerg", "Mid Laner", 4.38);
+        $scope.p4 = myService.newPlayer("WildTurtle", "Jason Tran", "AD Carry", 3.89);
+        $scope.p5 = myService.newPlayer("Biofrost", "Vincent Wang", "Support", 1.10);*/
+        
+        //$scope.tsm.addPlayer($scope.p1);
+
         $scope.teamName = $scope.teamName;
         $scope.teamVictories = $scope.teamVictories;
         $scope.teamDefeats = $scope.teamDefeats;
@@ -10,19 +21,27 @@ app.controller('teamsPlayersController', ['$scope', 'myService',
         $scope.playerName = $scope.playerName;
         $scope.playerRole = $scope.playerRole;
         $scope.playerKda = $scope.playerKda;
-        
+
         $scope.teamSubFunc = function () {
-            $scope.team = myService.newTeam(teamName, teamVictories, teamDefeats, game);
+            $scope.team = myService.newTeam($scope.teamName, $scope.teamVictories, $scope.teamDefeats, $scope.game);
             console.log("Submit de teams");
         }
-        $scope.playerSubFunc = function () {
-            $scope.player = myService.newPlayer(playerNick, playerName, playerRole, playerKda);
+        $scope.playerSubFunc = function (selectedTeam) {
+            console.log(selectedTeam);
+            $scope.player = myService.newP(selectedTeam, $scope.playerNick, $scope.playerName, $scope.playerRole, $scope.playerKda);
             console.log("Submit de players");
         }
+        
+        $scope.teams = myService.getAllTeams();
+        
+        console.log($scope.selectedTeam);
     }]);
 
 app.controller('resultController', ['$scope', 'myService',
     function ($scope, myService) {
         $scope.teams = myService.getAllTeams();
         $scope.players = myService.getAllPlayers();
+
+        console.log($scope.selectedTeam);
+        
     }]);
