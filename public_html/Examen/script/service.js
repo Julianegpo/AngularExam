@@ -29,9 +29,9 @@ function Team(name, victories, defeats, game) {
             }
         }
     }
-    this.delPlayer = function (nick) {
+    this.delPlayerByNick = function (nick) {
         for (var i = 0; i < this.players.length; i++) {
-            if (this.players[i].name == nick) {
+            if (this.players[i].nickname == nick) {
                 //return this.players[i];
             }
         }
@@ -45,7 +45,7 @@ function Team(name, victories, defeats, game) {
                 player = this.players[i];
             }
         }
-        return player;
+        return player.nickname+", "+player.kda;
     }
 }
 
@@ -60,9 +60,8 @@ app.service('myService', function () {
     }
     this.newP = function (team, nick, name, role, kda) {
         var player = new Player(nick, name, role, kda);
-        //console.log(team);
         this.teams[team].players.push(player);
-        //this.players.push(player);
+        this.players.push(player);
     }
     this.newTeam = function (name, victories, defeats, game) {
         var team = new Team(name, victories, defeats, game);

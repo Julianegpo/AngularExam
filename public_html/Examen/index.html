@@ -44,6 +44,7 @@
         </div>
 
         <div class="container" ng-controller="resultController">
+
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -59,7 +60,7 @@
                             </th>
                             <th>
                                 Game: {{teams[selectedTeam].game}}<br>
-                                Player with max KDA: {{}}
+                                Player with max KDA: {{teams[selectedTeam].getPlayerMaxKda()}}
                             </th>
                         </tr>
                         <tr>
@@ -70,23 +71,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Bjergsen</td>
-                            <td>Soren Bjerg</td>
-                            <td>Mid Laner</td>
-                            <td>4.59</td>
+                        <tr ng-repeat="player in teams[selectedTeam].players">
+                            <td>{{player.nickname}}</td>
+                            <td>{{player.name}}</td>
+                            <td>{{player.role}}</td>
+                            <td>{{player.kda}}</td>
                             <td>
-                                <a class='btn alert-danger'>
+                                <a ng-click="deletePlayerFunc(selectedTeam, player.nickname)" class='btn alert-danger'>
                                     Remove
                                     <span class="glyphicon glyphicon-remove">
                                     </span>    
                                 </a>
-
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <!--<select class="form-control" id="sel1">
+                <option ng-repeat="player in players track by $index" value={{$index}}>{{player.nickname}}, {{player.name}}</option>
+            </select>-->
 
         </div>
     </body>

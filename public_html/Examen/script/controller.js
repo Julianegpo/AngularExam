@@ -27,14 +27,21 @@ app.controller('teamsPlayersController', ['$scope', 'myService',
             console.log("Submit de teams");
         }
         $scope.playerSubFunc = function (selectedTeam) {
-            console.log(selectedTeam);
+            console.log($scope.playerNick);
+            console.log($scope.playerName);
+            console.log($scope.playerRole);
+            console.log($scope.playerKda);
+                        
             $scope.player = myService.newP(selectedTeam, $scope.playerNick, $scope.playerName, $scope.playerRole, $scope.playerKda);
             console.log("Submit de players");
         }
         
         $scope.teams = myService.getAllTeams();
         
-        console.log($scope.selectedTeam);
+        //revisar funcion para borrar jugadores
+        $scope.deletePlayerFunc = function (selectedTeam, jug) {
+            //$scope.jugadoresEq = $scope.equipos[equipoSel].jugadores.splice(jug, 1);
+        }
     }]);
 
 app.controller('resultController', ['$scope', 'myService',
@@ -42,6 +49,6 @@ app.controller('resultController', ['$scope', 'myService',
         $scope.teams = myService.getAllTeams();
         $scope.players = myService.getAllPlayers();
 
-        console.log($scope.selectedTeam);
+        //console.log($scope.selectedTeam);
         
     }]);
