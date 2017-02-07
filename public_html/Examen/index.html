@@ -37,7 +37,8 @@
                         <select class="form-control" id="sel1" ng-model="selectedTeam">
                             <option ng-repeat="team in teams track by $index" value={{$index}}>{{team.name}}</option>
                         </select>
-                        <a class="btn btn-warning" ng-click="playerSubFunc(selectedTeam)"><span class="glyphicon glyphicon-pencil"></span> Create Player / Modify Player</a>
+                        <br>
+                        <a class="btn btn-primary" ng-click="playerSubFunc(selectedTeam)"><span class="glyphicon glyphicon-pencil"></span> Create Player / Modify Player</a>
                     </form>
                 </div>
             </div>
@@ -71,13 +72,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="player in teams[selectedTeam].players">
-                            <td>{{player.nickname}}</td>
+                        <tr ng-repeat="player in teams[selectedTeam].players track by $index">
+                            <td ng-click="modifyPlayerFunc(selectedTeam, $index)">{{player.nickname}}</td>
                             <td>{{player.name}}</td>
                             <td>{{player.role}}</td>
                             <td>{{player.kda}}</td>
                             <td>
-                                <a ng-click="deletePlayerFunc(selectedTeam, player.nickname)" class='btn alert-danger'>
+                                <a ng-click="deletePlayerFunc(selectedTeam, $index)" class='btn alert-danger'>
                                     Remove
                                     <span class="glyphicon glyphicon-remove">
                                     </span>    

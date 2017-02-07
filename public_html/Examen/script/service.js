@@ -29,12 +29,8 @@ function Team(name, victories, defeats, game) {
             }
         }
     }
-    this.delPlayerByNick = function (nick) {
-        for (var i = 0; i < this.players.length; i++) {
-            if (this.players[i].nickname == nick) {
-                //return this.players[i];
-            }
-        }
+    this.delPlayer = function (playerIndex) {
+        this.players.splice(playerIndex, 1);
     }
     this.getPlayerMaxKda = function () {
         var min = 0;
