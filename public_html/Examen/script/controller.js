@@ -29,14 +29,6 @@ app.controller('teamsPlayersController', ['$scope', 'myService',
         }
 
         $scope.teams = myService.getAllTeams();
-
-        //revisar funcion para borrar jugadores
-
-    }]);
-
-app.controller('resultController', ['$scope', 'myService',
-    function ($scope, myService) {
-        $scope.teams = myService.getAllTeams();
         $scope.players = myService.getAllPlayers();
 
         $scope.deletePlayerFunc = function (selectedTeam, playerIndex) {
@@ -46,4 +38,10 @@ app.controller('resultController', ['$scope', 'myService',
             //$scope.teams[selectedTeam].updatePlayer();
             $scope.playerNick = $scope.teams[selectedTeam].players[playerIndex].nickname;
         }
+
+    }]);
+
+app.controller('resultController', ['$scope', 'myService',
+    function ($scope, myService) {
+        
     }]);

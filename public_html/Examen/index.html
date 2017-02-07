@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
@@ -12,9 +12,9 @@
         <script src="script/controller.js" type="text/javascript"></script>
         <script src="script/service.js" type="text/javascript"></script>
     </head>
-    <body ng-app="myApp">
+    <body ng-controller="teamsPlayersController">
 
-        <div class="page-header text-center" ng-controller="teamsPlayersController">
+        <div class="page-header text-center">
             <div class="container">
                 <div class="row">
                     <strong>Team section</strong>
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="container" ng-controller="resultController">
+        <div class="container">
 
             <div class="table-responsive">
                 <table class="table table-striped">
