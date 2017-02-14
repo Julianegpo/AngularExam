@@ -23,7 +23,7 @@ app.controller('teamsPlayersController', ['$scope', 'myService',
             $scope.team = myService.newTeam($scope.teamName, $scope.teamVictories, $scope.teamDefeats, $scope.game);
             console.log("Submit de teams");
         }
-        $scope.playerSubFunc = function (selectedTeam) {            
+        $scope.playerSubFunc = function (selectedTeam) {
             $scope.player = myService.newP(selectedTeam, $scope.playerNick, $scope.playerName, $scope.playerRole, $scope.playerKda);
             console.log("Submit de players");
         }
@@ -34,14 +34,4 @@ app.controller('teamsPlayersController', ['$scope', 'myService',
         $scope.deletePlayerFunc = function (selectedTeam, playerIndex) {
             $scope.teams[selectedTeam].delPlayer(playerIndex);
         }
-        $scope.modifyPlayerfunc = function (selectedTeam, playerIndex) {
-            //$scope.teams[selectedTeam].updatePlayer();
-            $scope.playerNick = $scope.teams[selectedTeam].players[playerIndex].nickname;
-        }
-
-    }]);
-
-app.controller('resultController', ['$scope', 'myService',
-    function ($scope, myService) {
-        
     }]);

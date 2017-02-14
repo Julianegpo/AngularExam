@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
     <head>
-        <title>TODO supply a title</title>
+        <title>Teams & Players</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
@@ -38,7 +38,7 @@
                             <option ng-repeat="team in teams track by $index" value={{$index}}>{{team.name}}</option>
                         </select>
                         <br>
-                        <a class="btn btn-primary" ng-click="playerSubFunc(selectedTeam)"><span class="glyphicon glyphicon-pencil"></span> Create Player / Modify Player</a>
+                        <a class="btn btn-primary" ng-click="playerSubFunc(selectedTeam)"><span class="glyphicon glyphicon-pencil"></span> Create Player</a>
                     </form>
                 </div>
             </div>
@@ -51,17 +51,17 @@
                     <thead>
                         <tr>
                             <th>
-                                <select class="form-control" id="sel1" ng-model="selectedTeam">
+                                <select class="form-control" id="sel1" ng-model="selectedTeam2">
                                     <option ng-repeat="team in teams track by $index" value={{$index}}>{{team.name}}</option>
                                 </select>
                             </th>
                             <th colspan="2">
-                                Victories: {{teams[selectedTeam].victories}}<br>
-                                Defeats: {{teams[selectedTeam].defeats}}
+                                Victories: {{teams[selectedTeam2].victories}}<br>
+                                Defeats: {{teams[selectedTeam2].defeats}}
                             </th>
                             <th>
-                                Game: {{teams[selectedTeam].game}}<br>
-                                Player with max KDA: {{teams[selectedTeam].getPlayerMaxKda()}}
+                                Game: {{teams[selectedTeam2].game}}<br>
+                                Player with max KDA: {{teams[selectedTeam2].getPlayerMaxKda()}}
                             </th>
                         </tr>
                         <tr>
@@ -72,13 +72,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="player in teams[selectedTeam].players track by $index">
-                            <td ng-click="modifyPlayerFunc(selectedTeam, $index)">{{player.nickname}}</td>
+                        <tr ng-repeat="player in teams[selectedTeam2].players track by $index">
+                            <td>{{player.nickname}}</td>
                             <td>{{player.name}}</td>
                             <td>{{player.role}}</td>
                             <td>{{player.kda}}</td>
                             <td>
-                                <a ng-click="deletePlayerFunc(selectedTeam, $index)" class='btn alert-danger'>
+                                <a ng-click="deletePlayerFunc(selectedTeam2, $index)" class='btn alert-danger'>
                                     Remove
                                     <span class="glyphicon glyphicon-remove">
                                     </span>    
