@@ -26,14 +26,14 @@ app.controller('teamsPlayersController', ['$scope', 'myService',
         }
         $scope.playerSubFunc = function (selectedTeam) {
             var found = false;
-            for (var i = 0; i < $scope.teams[selectedTeam].players.length; i++) {
-                console.log($scope.teams[selectedTeam.players]);
-                if ($scope.teams[selectedTeam].players[i].nickname == $scope.playerNick) {
+            var long = $scope.teams[selectedTeam].players.length;
+            for (var i = 0; i < long; i++) {
+                if ($scope.teams[selectedTeam].players[i].name == $scope.playerName) {
                     found = true;
                     $scope.teams[selectedTeam].players[i].updatePlayer($scope.playerNick, $scope.playerRole, $scope.playerKda, $scope.playerMinutes);
                 }
             }
-            if(!found){
+            if (!found) {
                 $scope.player = myService.newP(selectedTeam, $scope.playerNick, $scope.playerName, $scope.playerRole, $scope.playerKda, $scope.playerMinutes);
                 console.log("Submit de players");
             }
