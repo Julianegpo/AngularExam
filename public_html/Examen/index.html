@@ -34,11 +34,13 @@
                         <input type="text" placeholder="Name" ng-model="playerName">
                         <input type="text" placeholder="Role" ng-model="playerRole">
                         <input type="text" placeholder="KDA" ng-model="playerKda">
+                        <input type="text" placeholder="Minutes" ng-model="playerMinutes">
                         <select class="form-control" id="sel1" ng-model="selectedTeam">
                             <option ng-repeat="team in teams track by $index" value={{$index}}>{{team.name}}</option>
                         </select>
                         <br>
-                        <a class="btn btn-primary" ng-click="playerSubFunc(selectedTeam)"><span class="glyphicon glyphicon-pencil"></span> Create Player</a>
+                        <a class="btn btn-primary" ng-click="playerSubFunc(selectedTeam)"><span class="glyphicon glyphicon-pencil">
+                            </span> Create Player / Modify Player</a>
                     </form>
                 </div>
             </div>
@@ -69,14 +71,16 @@
                             <th>Name</th>
                             <th>Role</th>
                             <th>KDA</th>
+                            <th>Minutes played</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="player in teams[selectedTeam2].players track by $index">
-                            <td>{{player.nickname}}</td>
+                            <td ng-click="modifyPlayerFunc(selectedTeam2, $index)">{{player.nickname}}</td>
                             <td>{{player.name}}</td>
                             <td>{{player.role}}</td>
                             <td>{{player.kda}}</td>
+                            <td>{{player.minutes}}</td>
                             <td>
                                 <a ng-click="deletePlayerFunc(selectedTeam2, $index)" class='btn alert-danger'>
                                     Remove
@@ -88,11 +92,30 @@
                     </tbody>
                 </table>
             </div>
+            <center>
+                <strong>Tournaments Info</strong>
+                <br>
+                <a ng-click="firstLastTourFunc(selectedTeam3)"
+                   class="btn btn-warning">
+                    Move first tournament to last on the list
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </a>
+            </center>
+            <select class="form-control" id="sel1" ng-model="selectedTeam3">
+                <option ng-repeat="team in teams track by $index" value={{$index}}>{{team.name}}</option>
+            </select>
+            <div ng-repeat="tournament in teams[selectedTeam3].tournaments track by $index">
+                <div>{{tournament.position}}, {{tournament.year}}</div>
+            </div>
 
-            <!--<select class="form-control" id="sel1">
-                <option ng-repeat="player in players track by $index" value={{$index}}>{{player.nickname}}, {{player.name}}</option>
-            </select>-->
-
+            <br>
+            <center>
+                <input type="text" placeholder="Año del campeonato" ng-model="tournamentYear">
+                <a class="btn btn-danger" ng-click="removeTourFunc(tournamentYear, selectedTeam3)">
+                    Remove tournament
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </center>
         </div>
     </body>
 </html>
